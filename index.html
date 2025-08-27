@@ -2,29 +2,31 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Más que tinta - Recuerdos</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gluten:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gluten:wght@100..900&display=swap" rel="stylesheet">
   <style>
     /* --- Estilos globales --- */
     body {
       margin: 0;
-      font-family: 'Gluten', Montserrat;
+      font-family: 'Gluten', Montserrat, sans-serif;
       background-color: #f5f3ef;
       color: #333;
     }
 
     /* --- Encabezado --- */
-        header {
+    header {
       text-align: center;
-      padding: 80px 20px;
+      padding: 60px 20px;
       color: white;
       font-family: 'Gluten', cursive;
-      background: linear-gradient(#61a7d4, #89b3cf); 
-      /* Centro claro → borde sólido */
+      background: linear-gradient(#61a7d4, #89b3cf);
+      position: relative;
+      overflow: hidden;
     }
-      header::before {
+    header::before {
       content: "";
       position: absolute;
       top: -50%;
@@ -35,18 +37,20 @@
       animation: moveLight 6s linear infinite;
       z-index: 0;
     }
-    
     header h1 {
       margin: 0;
-      font-family: Gluten;
-      font-size: 3em;
+      font-size: 2.5em;
       letter-spacing: 2px;
+      z-index: 1;
+      position: relative;
     }
     header p {
-      margin-top: 20x;
-      font-size: 1.2em;
-      font-style: Montserrat;
+      margin-top: 10px;
+      font-size: 1.1em;
+      z-index: 1;
+      position: relative;
     }
+
     @keyframes moveLight {
       0% { transform: translate(0,0); }
       25% { transform: translate(50px,30px); }
@@ -60,10 +64,12 @@
       background: #a3b18a;
       display: flex;
       justify-content: center;
-      gap: 20px;
+      flex-wrap: wrap;
+      gap: 15px;
       padding: 12px;
       position: sticky;
       top: 0;
+      z-index: 10;
     }
     nav a {
       color: #333;
@@ -80,22 +86,22 @@
       background: url("fondo.jpg") center/cover no-repeat;
       color: #333;
       text-align: center;
-      padding: 100px 20px;
+      padding: 60px 20px;
     }
     .hero h1 {
-      font-size: 3em;
+      font-size: 2.5em;
       margin-bottom: 10px;
-      text-shadow: 2px 2px 5px rgba(207, 165, 160);
+      text-shadow: 2px 2px 5px rgba(207, 165, 160, 0.8);
     }
     .hero p {
-      font-size: 1.3em;
+      font-size: 1.2em;
       margin-bottom: 20px;
     }
     .hero button {
       background: #a3b18a;
       border: none;
-      padding: 15px 30px;
-      font-size: 1.1em;
+      padding: 12px 25px;
+      font-size: 1em;
       border-radius: 25px;
       cursor: pointer;
       transition: transform 0.2s, background 0.3s;
@@ -108,11 +114,11 @@
 
     /* --- Sección de productos destacados --- */
     .productos {
-      padding: 50px 20px;
+      padding: 40px 20px;
       text-align: center;
     }
     .productos h2 {
-      font-size: 2.2em;
+      font-size: 2em;
       margin-bottom: 30px;
     }
     .grid {
@@ -131,10 +137,10 @@
       transform: translateY(-5px);
     }
     .card img {
-  width: 100%;            /* La imagen ocupa todo el ancho de la tarjeta */
-  height: 200px;          /* Mantiene altura uniforme */
-  object-fit: contain;     /* La imagen se ve completa sin cortarse */
-  background-color: #f5f3ef; /* Fondo opcional si la imagen no ocupa todo el espacio */
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      background-color: #f5f3ef;
     }
     .card h3 {
       margin: 15px 0 5px;
@@ -164,6 +170,26 @@
       text-align: center;
       padding: 20px;
       margin-top: 50px;
+      font-size: 0.9em;
+    }
+    footer a {
+      color: white;
+      text-decoration: underline;
+    }
+
+    /* --- Responsive para móviles --- */
+    @media (max-width: 600px) {
+      header h1 { font-size: 2em; }
+      header p { font-size: 1em; }
+      .hero h1 { font-size: 2em; }
+      .hero p { font-size: 1em; }
+      .hero { padding: 40px 15px; }
+      .productos h2 { font-size: 1.5em; }
+      nav { gap: 10px; }
+    }
+    @media (max-width: 400px) {
+      .grid { grid-template-columns: 1fr; }
+      nav { flex-direction: column; gap: 10px; }
     }
   </style>
 </head>
@@ -185,51 +211,43 @@
   <section class="hero">
     <h1>Regala momentos inolvidables</h1>
     <p>Cuadros, imanes y detalles únicos con tus fotos</p>
-    <button>Ver productos</button>
+    <button onclick="document.getElementById('productos').scrollIntoView({behavior:'smooth'});">Ver productos</button>
   </section>
 
   <!-- Productos -->
   <section class="productos" id="productos">
     <h2>Productos destacados</h2>
     <div class="grid">
-    
       <!-- Producto 1 -->
       <div class="card">
         <img src="imagen.1.png" alt="Mini Tripode">
         <h3>Mini Tripode</h3>
         <p>$50.000 COP</p>
-        <a class="whatsapp-btn" href="https://wa.me/573134884870?text=Hola%20me%20interesa%20el%20Mini%20tripode%20"> <button>Comprar</button></a>
-    </div>
-      <!-- Producto 2 -->
+        <a class="whatsapp-btn" href="https://wa.me/573134884870?text=Hola%20me%20interesa%20el%20Mini%20tripode" target="_blank"><button>Comprar</button></a>
+      </div>
+
+      <!-- Producto 2 (próximamente) -->
       <div class="card">
-        <img src="imagen.2.png" alt="Proximo Producto">
-        <h3>Proximo Producto</h3>
-        <p>$$$ COP</p>
-        <a class="whatsapp-btn" href="https://wa.me/573134884870?text=Hola%20me%20interesa%20"> <button>Comprar</button></a>
-    </div>
-       <!-- Producto 3 -->
-      <div class="card">
-        <img src="imagen.2.png" alt="Proximo Producto">
-        <h3>Proximo Producto</h3>
-        <p>$$$ COP</p>
-        <a class="whatsapp-btn" href="https://wa.me/573134884870?text=Hola%20me%20interesa%20"> <button>Comprar</button></a>
-    </div>
-       <!-- Producto 4 -->
-      <div class="card">
-        <img src="imagen.2.png" alt="Proximo Producto">
-        <h3>Proximo Producto</h3>
-        <p>$$$ COP</p>
-        <a class="whatsapp-btn" href="https://wa.me/573134884870?text=Hola%20me%20interesa%20"> <button>Comprar</button></a>
+        <img src="proximamente.png" alt="Próximamente">
+        <h3>Nuevo Producto</h3>
+        <p>Próximamente</p>
+        <button disabled>Comprar</button>
+      </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer id="contacto">
     <p>&copy; 2025 Más que tinta. Todos los derechos reservados.</p>
-    <p>Contacto: masquetinta@gmail.com | WhatsApp: +57 313 488 4870</p>
-    <p>Redes sociales: @MASQUETINTA.RECUERDOS";></p>
+    <p>
+      Contacto: 
+      <a href="mailto:masquetinta@gmail.com">masquetinta@gmail.com</a> |
+      <a href="https://wa.me/573134884870" target="_blank">WhatsApp: +57 313 488 4870</a>
+    </p>
+    <p>
+      Redes sociales: 
+      <a href="https://www.instagram.com/masquetinta.recuerdos" target="_blank">@MASQUETINTA.RECUERDOS</a>
+    </p>
   </footer>
 </body>
-
 </html>
-

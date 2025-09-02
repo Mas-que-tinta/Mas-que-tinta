@@ -17,6 +17,7 @@
       font-family: 'Dancing Script', Montserrat, sans-serif;
       background-color: #f5f3ef;
       color: #333;
+      
     }
     .linea-superior {
   border: none;               /* quitar estilo por defecto */
@@ -82,6 +83,42 @@
   transition: all 0.3s ease;
   box-shadow: 0 3px 6px rgba(0,0,0,0.2); /* sombrita */
 }
+/* Estilo del buscador */
+#buscador {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#buscador button {
+  color: White;
+  font-size: 1.2em;
+  background: #61a7d4;
+  border-radius: 50%;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+#buscador button:hover {
+  background: white;
+  color: #61a7d4;
+  transform: scale(1.1);
+}
+
+/* Input de búsqueda */
+#buscarProducto {
+  padding: 6px 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  outline: none;
+  display: none; /* ← si quieres que no se vea siempre */
+}
 
 /* Cuando pasas el mouse */
 nav a:hover {
@@ -114,6 +151,30 @@ nav a:hover {
     .card:hover {
       transform: translateY(-5px);
     }
+    /* Hacemos que toda la tarjeta sea clickeable sin verse como enlace */
+.card-link {
+  text-decoration: none; /* quita la raya */
+  color: inherit;        /* hereda el color del texto */
+  display: block;        /* toda la tarjeta es clickeable */
+}
+
+.card-link:hover {
+  transform: translateY(-5px); /* efecto opcional al pasar el mouse */
+}
+.card a {
+  text-decoration: none; /* quita subrayado */
+  color: inherit;        /* hereda color */
+  display: block;        /* que toda la tarjeta sea clickeable */
+  outline: none;         /* quita el contorno azul al hacer clic */
+}
+
+/* Aseguramos que h3 y p dentro de la tarjeta no tengan subrayado */
+.card h3,
+.card p {
+  text-decoration: none;
+  color: inherit;
+}
+
     .card img {
       width: 100%;
       height: auto;
@@ -171,6 +232,7 @@ nav a:hover {
       .grid { grid-template-columns: 1fr; }
       nav { flex-direction: column; gap: 10px; }
     }
+    
   </style>
 </head>
 <body>
@@ -183,31 +245,38 @@ nav a:hover {
   <hr class="linea-superior">
   <!-- Menú -->
   <nav>
-  <a href="#"><i class="fas fa-search"></i></a>
-  <a href="https://wa.me/573134884870?text=Hola%20quiero%20comprar" target="_blank">
+  <!-- Buscador -->
+  <form id="buscador">
+    <input type="text" id="buscarProducto" placeholder="Buscar..." />
+    <button type="submit"><i class="fas fa-search"></i></button>
+  </form>
+
+  <!-- Icono de bolsita que abre WhatsApp -->
+  <a href="https://wa.me/573001112233" target="_blank" class="icono-bolsa">
     <i class="fas fa-shopping-bag"></i>
   </a>
 </nav>
+
 
   <!-- Productos -->
   <section class="productos" id="productos">
     <div class="grid">
       <!-- Producto 1 -->
       <div class="card">
-        <img src="imagen.1.png" alt="Mini Tripode">
-        <h3>Mini Tripode</h3>
-        <p>$50.000 COP</p>
-        <a class="whatsapp-btn" href="https://wa.me/573134884870?text=Hola%20me%20interesa%20el%20Mini%20tripode" target="_blank"><button>Comprar</button></a>
-      </div>
+  <a href="producto1.html">
+    <img src="imagen.1.png" alt="Mini Tripode">
+    <h3>Mini Tripode</h3>
+    <p>$50.000 COP</p>
+  </a>
+</div>
 
-      <!-- Producto 2 (próximamente) -->
-      <div class="card">
-        <img src="imagen.2.png" alt="Próximamente">
-        <h3>Nuevo Producto</h3>
-        <p>Próximamente</p>
-        <button disabled>Comprar</button>
-      </div>
-    </div>
+<div class="card">
+  <a href="producto2.html">
+    <img src="imagen.2.png" alt="Nuevo Producto">
+    <h3>Nuevo Producto</h3>
+    <p>Próximamente</p>
+  </a>
+</div>
   </section>
 
   <!-- Footer -->
@@ -223,9 +292,18 @@ nav a:hover {
       <a href="https://www.instagram.com/masquetinta.recuerdos" target="_blank">@MASQUETINTA.RECUERDOS</a>
     </p>
   </footer>
+  <!-- Script para mostrar el buscador -->
+  <script>
+    const btnBuscar = document.querySelector("#buscador button");
+    const inputBuscar = document.getElementById("buscarProducto");
+
+    btnBuscar.addEventListener("click", function(e) {
+      if (inputBuscar.style.display === "none" || inputBuscar.style.display === "") {
+        e.preventDefault(); // no envía el form todavía
+        inputBuscar.style.display = "block";
+        inputBuscar.focus();
+      }
+    });
+  </script>
 </body>
 </html>
-
-
-
-

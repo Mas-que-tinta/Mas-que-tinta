@@ -10,6 +10,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-x..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
+  .linea-superior {
+  border: none;               /* quitar estilo por defecto */
+  height: 2px;                /* grosor de la línea */
+  background-color: #61a7d4;  /* color de la línea */
+  margin: 0;                  /* sin espacio extra */
+}
   
     /* --- Estilos globales --- */
     body {
@@ -46,7 +52,6 @@
       z-index: 1;
       position: relative;
     }
-
     /* --- Menú de navegación --- */
     nav {
       background: White;
@@ -137,6 +142,7 @@ nav a:hover {
 
     /* --- Footer --- */
     footer {
+      font-family: Montserrat;
       background: #333;
       color: white;
       text-align: center;
@@ -145,6 +151,7 @@ nav a:hover {
       font-size: 0.9em;
     }
     footer a {
+      font-family: Montserrat;
       color: white;
       text-decoration: underline;
     }
@@ -171,7 +178,8 @@ nav a:hover {
     <h1>Más que tinta</h1>
     <p>Tus recuerdos merecen más que tinta </p>
   </header>
-
+  <!-- Línea separadora -->
+  <hr class="linea-superior">
   <!-- Menú -->
   <nav>
   <a href="#"><i class="fas fa-search"></i></a>
@@ -216,5 +224,8 @@ nav a:hover {
   </footer>
 </body>
 </html>
+
+
+
 
 

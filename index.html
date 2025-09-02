@@ -11,18 +11,27 @@
     /* --- Estilos globales --- */
     body {
       margin: 0;
-      font-family: 'Gluten', Montserrat, sans-serif;
+      font-family: 'Muthiara', Montserrat, sans-serif;
       background-color: #f5f3ef;
       color: #333;
     }
 
     /* --- Encabezado --- */
+  head{
+    @font-face {
+  font-family: 'Muthiara';
+  src: url('Muthiara.woff2') format('woff2'),
+       url('Muthiara.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
     header {
       text-align: center;
       padding: 60px 20px;
-      color: white;
-      font-family: 'Gluten', cursive;
-      background: linear-gradient(#61a7d4, #89b3cf);
+      color: #61a7d4;
+      font-family: 'Muthiara';
+      background: white;
       position: relative;
       overflow: hidden;
     }
@@ -58,6 +67,7 @@
       75% { transform: translate(40px,-20px); }
       100% { transform: translate(0,0); }
     }
+  }
 
     /* --- Menú de navegación --- */
     nav {
@@ -251,5 +261,3 @@
   </footer>
 </body>
 </html>
-
-

@@ -6,19 +6,15 @@
   <title>Más que tinta - Recuerdos</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Gluten:wght@100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-x..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <style>
-  @font-face {
-  font-family: 'Muthiara';
-  src: url('Muthiara.woff2') format('woff2'),
-       url('Muthiara.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
+  
     /* --- Estilos globales --- */
     body {
       margin: 0;
-      font-family: 'Muthiara', Montserrat, sans-serif;
+      font-family: 'Dancing Script', Montserrat, sans-serif;
       background-color: #f5f3ef;
       color: #333;
     }
@@ -27,27 +23,18 @@
     
     header {
       text-align: center;
-      padding: 60px 20px;
+      padding: 30px 20px;
       color: #61a7d4;
-      font-family: 'Muthiara';
+      font-family: 'Dancing Script', cursive;
+      font-weight: <weight>;
+      font-style: normal;
       background: white;
       position: relative;
       overflow: hidden;
     }
-    header::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,224,0.3) 0%, rgba(255,255,224,0) 90%);
-      animation: moveLight 6s linear infinite;
-      z-index: 0;
-    }
     header h1 {
       margin: 0;
-      font-size: 2.5em;
+      font-size: 8em;
       letter-spacing: 2px;
       z-index: 1;
       position: relative;
@@ -55,71 +42,47 @@
     header p {
       margin-top: 10px;
       font-size: 1.1em;
+      font-family: Montserrat;
       z-index: 1;
       position: relative;
     }
 
-    @keyframes moveLight {
-      0% { transform: translate(0,0); }
-      25% { transform: translate(50px,30px); }
-      50% { transform: translate(-30px,50px); }
-      75% { transform: translate(40px,-20px); }
-      100% { transform: translate(0,0); }
-    }
-  }
-
     /* --- Menú de navegación --- */
     nav {
-      background: #a3b18a;
+      background: White;
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      padding: 12px;
+      justify-content: flex-end;
+      flex-wrap: nowwrap;
+      gap: 10px;
+      padding: 12px 20px;
       position: sticky;
       top: 0;
       z-index: 10;
     }
     nav a {
-      color: #333;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: #5a3d2b;
-    }
+  color: White;
+  font-size: 1.2em;
+  text-decoration: none;
 
-    /* --- Hero (bienvenida) --- */
-    .hero {
-      background: url("fondo.jpg") center/cover no-repeat;
-      color: #333;
-      text-align: center;
-      padding: 60px 20px;
-    }
-    .hero h1 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
-      text-shadow: 2px 2px 5px rgba(207, 165, 160, 0.8);
-    }
-    .hero p {
-      font-size: 1.2em;
-      margin-bottom: 20px;
-    }
-    .hero button {
-      background: #a3b18a;
-      border: none;
-      padding: 12px 25px;
-      font-size: 1em;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: transform 0.2s, background 0.3s;
-    }
-    .hero button:hover {
-      background: #6b4f3a;
-      color: white;
-      transform: scale(1.05);
-    }
+  /* círculo */
+  background: #61a7d4; /* color de fondo del círculo */
+  border-radius: 50%; /* hace el círculo */
+  padding: 10px; /* espacio alrededor del icono */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* efectos */
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2); /* sombrita */
+}
+
+/* Cuando pasas el mouse */
+nav a:hover {
+  background: white;     /* círculo blanco */
+  color: #61a7d4;        /* cambia el color del icono */
+  transform: scale(1.1); /* hace zoom ligero */
+}
 
     /* --- Sección de productos destacados --- */
     .productos {
@@ -206,26 +169,19 @@
   <!-- Encabezado -->
   <header>
     <h1>Más que tinta</h1>
-    <p>Tus recuerdos merecen más que tinta ✨</p>
+    <p>Tus recuerdos merecen más que tinta </p>
   </header>
 
   <!-- Menú -->
   <nav>
-    <a href="#">Inicio</a>
-    <a href="#productos">Productos</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
-
-  <!-- Hero -->
-  <section class="hero">
-    <h1>Regala momentos inolvidables</h1>
-    <p>Cuadros, imanes y detalles únicos con tus fotos</p>
-    <button onclick="document.getElementById('productos').scrollIntoView({behavior:'smooth'});">Ver productos</button>
-  </section>
+  <a href="#"><i class="fas fa-search"></i></a>
+  <a href="https://wa.me/573134884870?text=Hola%20quiero%20comprar" target="_blank">
+    <i class="fas fa-shopping-bag"></i>
+  </a>
+</nav>
 
   <!-- Productos -->
   <section class="productos" id="productos">
-    <h2>Productos destacados</h2>
     <div class="grid">
       <!-- Producto 1 -->
       <div class="card">
@@ -260,4 +216,5 @@
   </footer>
 </body>
 </html>
+
 

@@ -9,14 +9,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-x..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
-    /* --- Estilos globales --- */
     body {
       margin: 0;
       font-family: 'Dancing Script', Montserrat, sans-serif;
-      background-color: white; /* Fondo blanco */
+      background-color: white;
       color: #333;
     }
 
@@ -29,28 +28,23 @@
 
     header {
       text-align: center;
-      padding: 30px 20px;
+      padding: 20px 10px;
       color: #61a7d4;
       font-family: 'Dancing Script', cursive;
-      font-style: normal;
       background: white;
-      position: relative;
-      overflow: hidden;
     }
 
     header h1 {
       margin: 0;
-      font-size: 3em;
+      font-size: 2.5em;
       letter-spacing: 2px;
-      z-index: 1;
-      position: relative;
     }
 
     nav {
       display: flex;
       justify-content: flex-end;
       gap: 10px;
-      padding: 10px 20px;
+      padding: 10px 15px;
       background: white;
       position: sticky;
       top: 0;
@@ -88,101 +82,89 @@
       border-radius: 20px;
       border: 1px solid #ccc;
       outline: none;
-      display: none; /* aparece al dar clic en la lupa */
+      display: none;
     }
 
-    /* --- Sección producto --- */
     .producto-detalle {
-      padding: 40px 20px;
+      padding: 20px;
       max-width: 600px;
       margin: 20px auto;
       background: white;
       border-radius: 15px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      text-align: center; /* Imagen centrada */
+      text-align: center;
     }
+
     /* Carrusel */
-.carrusel {
-  max-width: 600px;
-  margin: 20px auto;
-  position: relative;
-}
-.carrusel img {
-  width: 100%;
-  border-radius: 10px;
-  object-fit: contain;
-}
-.flecha {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 2em;
-  color: white;
-  background-color: rgba(0,0,0,0.007); /* semitransparente */
-  border-radius: 5px; /* cuadrado ligeramente redondeado */
-  padding: 5px; /* tamaño del botón */
-  cursor: pointer;
-  user-select: none;
-  transition: background 0.3s;
-}
-.flecha:hover {
-  background-color: rgba(0,0,0,0.2);
-}
-
-.flecha.izquierda { left: 10px; }
-.flecha.derecha { right: 10px; }
-
-.miniaturas {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 10px;
-}
-.miniaturas img {
-  width: 60px;
-  height: 60px;
-  border-radius: 5px;
-  cursor: pointer;
-  opacity: 0.6;
-  border: 2px solid transparent;
-  object-fit: cover;
-}
-.miniaturas img.activa {
-  border: 2px solid #61a7d4;
-  opacity: 1;
-}
-
-
-    .producto-detalle img {
+    .carrusel {
+      max-width: 100%;
+      margin: 20px auto;
+      position: relative;
+    }
+    .carrusel img {
       width: 100%;
-      height: auto;
+      border-radius: 10px;
       object-fit: contain;
-      margin-bottom: 20px;
+    }
+    .flecha {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2em;
+      color: white;
+      background-color: rgba(0,0,0,0.07);
+      border-radius: 5px;
+      padding: 5px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.3s;
+    }
+    .flecha:hover {
+      background-color: rgba(0,0,0,0.25);
+    }
+    .flecha.izquierda { left: 5px; }
+    .flecha.derecha { right: 5px; }
+
+    .miniaturas {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+    .miniaturas img {
+      width: 60px;
+      height: 60px;
+      border-radius: 5px;
+      cursor: pointer;
+      opacity: 0.6;
+      border: 2px solid transparent;
+      object-fit: cover;
+    }
+    .miniaturas img.activa {
+      border: 2px solid #61a7d4;
+      opacity: 1;
     }
 
     .detalle-texto {
-      text-align: left; /* Títulos y precio alineados a la izquierda */
+      text-align: left;
     }
-
     .detalle-texto h2 {
       font-size: 2em;
       color: #61a7d4;
       margin: 0 0 10px 0;
     }
-
     .detalle-texto p {
       font-size: 1em;
       color: #333;
       margin: 0 0 15px 0;
     }
-
     .detalle-texto h3 {
       font-size: 1.5em;
       margin-bottom: 10px;
       font-weight: bold;
       color: #333;
     }
-
     .detalle-texto ul {
       font-family: Montserrat;
       font-weight: normal;
@@ -190,7 +172,6 @@
       padding-left: 20px;
       margin-bottom: 20px;
     }
-
     .detalle-texto button {
       background: #6b4f3a;
       color: white;
@@ -200,62 +181,48 @@
       cursor: pointer;
       transition: background 0.3s;
     }
-
     .detalle-texto button:hover {
       background: #a3b18a;
     }
-
     .detalle-texto a.volver {
       color: #61a7d4;
       text-decoration: none;
       font-weight: bold;
     }
-
     .detalle-texto a.volver:hover {
       text-decoration: underline;
     }
+
+    /* --- Responsive --- */
+    @media (max-width: 768px) {
+      header h1 { font-size: 2em; }
+      nav a, #buscador button { padding: 8px; font-size: 1em; }
+      .detalle-texto h2 { font-size: 1.5em; }
+      .detalle-texto h3 { font-size: 1.2em; }
+      .detalle-texto p { font-size: 0.9em; }
+      .miniaturas img { width: 50px; height: 50px; }
+      .flecha { font-size: 1.5em; padding: 4px; }
+    }
+
+    @media (max-width: 480px) {
+      header h1 { font-size: 1.5em; }
+      nav { flex-direction: row; justify-content: space-between; }
+      .producto-detalle { padding: 15px; }
+      .detalle-texto h2 { font-size: 1.3em; }
+      .detalle-texto h3 { font-size: 1em; }
+      .detalle-texto p { font-size: 0.85em; }
+      .miniaturas img { width: 40px; height: 40px; }
+      .flecha { font-size: 1.2em; padding: 3px; }
+    }
+
   </style>
 </head>
-<script>
-  const imagenPrincipal = document.getElementById("imagenPrincipal");
-const miniaturas = document.querySelectorAll(".miniaturas img");
-const flechaIzq = document.querySelector(".flecha.izquierda");
-const flechaDer = document.querySelector(".flecha.derecha");
-let indice = 0;
-
-const actualizarImagen = () => {
-  imagenPrincipal.src = miniaturas[indice].src;
-  miniaturas.forEach((img, i) => {
-    img.classList.toggle("activa", i === indice);
-  });
-};
-
-flechaIzq.addEventListener("click", () => {
-  indice = (indice - 1 + miniaturas.length) % miniaturas.length;
-  actualizarImagen();
-});
-
-flechaDer.addEventListener("click", () => {
-  indice = (indice + 1) % miniaturas.length;
-  actualizarImagen();
-});
-
-miniaturas.forEach((mini, i) => {
-  mini.addEventListener("click", () => {
-    indice = i;
-    actualizarImagen();
-  });
-});
-
-</script>
 <body>
-  <!-- Encabezado -->
   <header>
     <h1>Más que tinta</h1>
   </header>
   <hr class="linea-superior">
 
-  <!-- Barra de búsqueda y bolsa -->
   <nav>
     <form id="buscador">
       <input type="text" id="buscarProducto" placeholder="Buscar..." />
@@ -264,29 +231,28 @@ miniaturas.forEach((mini, i) => {
     <a href="https://wa.me/573134884870" target="_blank"><i class="fas fa-shopping-bag"></i></a>
   </nav>
 
-  <!-- Producto detalle -->
   <section class="producto-detalle">
     <div class="carrusel">
-  <span class="flecha izquierda">&#10094;</span>
-  <span class="flecha derecha">&#10095;</span>
-  <img src="imagen.1.png" alt="Mini Tripode" id="imagenPrincipal">
-</div>
+      <span class="flecha izquierda">&#10094;</span>
+      <span class="flecha derecha">&#10095;</span>
+      <img src="imagen.1.png" alt="Mini Tripode" id="imagenPrincipal">
+    </div>
 
-<div class="miniaturas">
-  <img src="imagen.1.png" class="activa">
-  <img src="imagen.2.png">
-  <img src="imagen.3.png">
-</div>
+    <div class="miniaturas">
+      <img src="imagen.1.png" class="activa">
+      <img src="imagen.2.png">
+      <img src="imagen.3.png">
+    </div>
 
     <div class="detalle-texto">
       <h2>Mini Tripode</h2>
       <p>Precio: $50.000 COP</p>
       <h3>Incluye:</h3>
       <ul>
-        <li>1 Cuadro 20x15cm, ¡Personalízalo eligiendo tu diseño favorito entre nuestros 3 encantadores modelos ❤️</li>
-        <li>1 Mini trípode🪵</li>
-        <li>1 Tarjeta personalizable📝</li>
-        <li>Stickers con la esencia de tu detalle ✨</li>
+        <li>1 Cuadro 20x15cm, personalizable entre nuestros modelos</li>
+        <li>1 Mini trípode</li>
+        <li>1 Tarjeta personalizable</li>
+        <li>Stickers con la esencia de tu detalle</li>
       </ul>
       <a href="https://wa.me/573134884870?text=Hola%20me%20interesa%20el%20Mini%20tripode" target="_blank">
         <button>Comprar</button>
@@ -296,8 +262,37 @@ miniaturas.forEach((mini, i) => {
     </div>
   </section>
 
-  <!-- Script buscador -->
   <script>
+    const imagenPrincipal = document.getElementById("imagenPrincipal");
+    const miniaturas = document.querySelectorAll(".miniaturas img");
+    const flechaIzq = document.querySelector(".flecha.izquierda");
+    const flechaDer = document.querySelector(".flecha.derecha");
+    let indice = 0;
+
+    const actualizarImagen = () => {
+      imagenPrincipal.src = miniaturas[indice].src;
+      miniaturas.forEach((img, i) => {
+        img.classList.toggle("activa", i === indice);
+      });
+    };
+
+    flechaIzq.addEventListener("click", () => {
+      indice = (indice - 1 + miniaturas.length) % miniaturas.length;
+      actualizarImagen();
+    });
+
+    flechaDer.addEventListener("click", () => {
+      indice = (indice + 1) % miniaturas.length;
+      actualizarImagen();
+    });
+
+    miniaturas.forEach((mini, i) => {
+      mini.addEventListener("click", () => {
+        indice = i;
+        actualizarImagen();
+      });
+    });
+
     const btnBuscar = document.querySelector("#buscador button");
     const inputBuscar = document.getElementById("buscarProducto");
 

@@ -232,7 +232,45 @@ nav a:hover {
       .grid { grid-template-columns: 1fr; }
       nav { flex-direction: column; gap: 10px; }
     }
-    
+ /* ----- Pestañas (tabs) ----- */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.tab-btn {
+  background: #61a7d4;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: all 0.3s ease;
+  font-family: Montserrat, sans-serif;
+}
+
+.tab-btn:hover {
+  background: white;
+  color: #61a7d4;
+  transform: scale(1.05);
+}
+
+.tab-btn.active {
+  background: #6b4f3a;
+  color: white;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+   
   </style>
 </head>
 <body>
@@ -259,37 +297,75 @@ nav a:hover {
 
 
   <!-- Productos -->
-  <section class="productos" id="productos">
+  <!-- Contenedor general de productos -->
+<section class="productos" id="productos">
+  <h2>Nuestros Productos</h2>
+
+  <!-- Botones de pestañas -->
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="personalizables">Productos Personalizables</button>
+    <button class="tab-btn" data-tab="venta">Productos</button>
+  </div>
+
+  <!-- Sección: Productos Personalizables -->
+  <div class="tab-content active" id="personalizables">
     <div class="grid">
       <!-- Producto 1 -->
       <div class="card">
-  <a href="producto1.html">
-    <img src="imagen.1.png" alt="Mini Tripode">
-    <h3>Mini Tripode</h3>
-    <p>$40.000 COP</p>
-  </a>
-</div>
+        <a href="producto1.html">
+          <img src="imagen.1.png" alt="Mini Trípode">
+          <h3>Mini Trípode</h3>
+          <p>$40.000 COP</p>
+        </a>
+        <button>Personalizar</button>
+      </div>
 
-<div class="card">
-  <a href="producto2.html">
-    <img src="imagen.6.png" alt="Calendario Magnetico">
-    <h3>Calendario Magnetico</h3>
-    <p>$40.000 COP</p>
-  </a>
-</div>
+      <!-- Producto 2 -->
+      <div class="card">
+        <a href="producto2.html">
+          <img src="imagen.6.png" alt="Calendario Magnético">
+          <h3>Calendario Magnético</h3>
+          <p>$40.000 COP</p>
+        </a>
+        <button>Personalizar</button>
+      </div>
+
+      <!-- Producto 3 -->
+      <div class="card">
+        <a href="producto3.html">
+          <img src="imagen.10.png" alt="Imanes Personalizados">
+          <h3>Imanes Personalizados</h3>
+          <p>Diseña tus imanes con tus fotos o logotipo</p>
+        </a>
+        <button>Personalizar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección: Productos en Venta -->
+  <div class="tab-content" id="venta">
+    <div class="grid">
+      <div class="card">
+        <a href="producto4.html">
+          <img src="imagen.4.png" alt="Cuadro Decorativo">
+          <h3>Cuadro Decorativo</h3>
+          <p>$55.000 COP</p>
+        </a>
+        <button>Comprar</button>
+      </div>
 
       <div class="card">
-  <a href="producto3.html">
-    <img src="imagen.10.png" alt="Imanes Personalizados">
-    <h3>Imanes Personalizados</h3>
-    <p></p>
-  </a>
-</div>
-  </section>
+        <a href="producto5.html">
+          <img src="imagen.5.png" alt="Llavero Metálico">
+          <h3>Llavero Metálico</h3>
+          <p>$20.000 COP</p>
+        </a>
+        <button>Comprar</button>
+      </div>
+    </div>
+  </div>
+</section>
 
-  </section>
-
-  
   <!-- Footer -->
   <footer id="contacto">
     <p>&copy; 2025 Más que tinta. Todos los derechos reservados.</p>
@@ -316,10 +392,22 @@ nav a:hover {
       }
     });
   </script>
+  <script>
+  const tabs = document.querySelectorAll('.tab-btn');
+  const contents = document.querySelectorAll('.tab-content');
+
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Quitar clase activa de todos los botones y contenidos
+      tabs.forEach(b => b.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
+
+      // Activar el botón y contenido correspondientes
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+  });
+</script>
+
 </body>
 </html>
-
-
-
-
-

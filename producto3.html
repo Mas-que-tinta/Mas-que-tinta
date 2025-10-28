@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imanes personalizados - Más que tinta</title>
+
+  <!-- Fuentes y Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Dancing Script', Montserrat, sans-serif;
+      background-color: white;
+      color: #333;
+    }
+
+    .linea-superior {
+      border: none;
+      height: 2px;
+      background-color: #61a7d4;
+      margin: 0;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px 10px;
+      color: #61a7d4;
+      font-family: 'Dancing Script', cursive;
+      background: white;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      letter-spacing: 2px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      padding: 10px 15px;
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav a, #buscador button {
+      color: white;
+      font-size: 1.2em;
+      background: #61a7d4;
+      border-radius: 50%;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    }
+
+    nav a:hover, #buscador button:hover {
+      background: white;
+      color: #61a7d4;
+      transform: scale(1.1);
+    }
+
+    #buscador {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    #buscarProducto {
+      padding: 6px 10px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      outline: none;
+      display: none;
+    }
+
+    .producto-detalle {
+      padding: 20px;
+      max-width: 600px;
+      margin: 20px auto;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    /* Carrusel */
+    .carrusel {
+      max-width: 100%;
+      margin: 20px auto;
+      position: relative;
+    }
+    .carrusel img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: contain;
+    }
+    .flecha {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2em;
+      color: white;
+      background-color: rgba(0,0,0,0.07);
+      border-radius: 5px;
+      padding: 5px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.3s;
+    }
+    .flecha:hover {
+      background-color: rgba(0,0,0,0.25);
+    }
+    .flecha.izquierda { left: 5px; }
+    .flecha.derecha { right: 5px; }
+
+    .miniaturas {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+    .miniaturas img {
+      width: 60px;
+      height: 60px;
+      border-radius: 5px;
+      cursor: pointer;
+      opacity: 0.6;
+      border: 2px solid transparent;
+      object-fit: cover;
+    }
+    .miniaturas img.activa {
+      border: 2px solid #61a7d4;
+      opacity: 1;
+    }
+
+    .detalle-texto {
+      text-align: left;
+    }
+    .detalle-texto h2 {
+      font-size: 2em;
+      color: #61a7d4;
+      margin: 0 0 10px 0;
+    }
+    .detalle-texto p {
+      font-size: 1em;
+      color: #333;
+      margin: 0 0 15px 0;
+    }
+    .detalle-texto h3 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+      font-weight: bold;
+      color: #333;
+    }
+    .detalle-texto ul {
+      font-family: Montserrat;
+      font-weight: normal;
+      color: #555;
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    .detalle-texto button {
+      background: #6b4f3a;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .detalle-texto button:hover {
+      background: #a3b18a;
+    }
+    .detalle-texto a.volver {
+      color: #61a7d4;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .detalle-texto a.volver:hover {
+      text-decoration: underline;
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 768px) {
+      header h1 { font-size: 2em; }
+      nav a, #buscador button { padding: 8px; font-size: 1em; }
+      .detalle-texto h2 { font-size: 1.5em; }
+      .detalle-texto h3 { font-size: 1.2em; }
+      .detalle-texto p { font-size: 0.9em; }
+      .miniaturas img { width: 50px; height: 50px; }
+      .flecha { font-size: 1.5em; padding: 4px; }
+    }
+
+    @media (max-width: 480px) {
+      header h1 { font-size: 1.5em; }
+      nav { flex-direction: row; justify-content: space-between; }
+      .producto-detalle { padding: 15px; }
+      .detalle-texto h2 { font-size: 1.3em; }
+      .detalle-texto h3 { font-size: 1em; }
+      .detalle-texto p { font-size: 0.85em; }
+      .miniaturas img { width: 40px; height: 40px; }
+      .flecha { font-size: 1.2em; padding: 3px; }
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Más que tinta</h1>
+  </header>
+  <hr class="linea-superior">
+
+  <nav>
+    <form id="buscador">
+      <input type="text" id="buscarProducto" placeholder="Buscar..." />
+      <button type="submit"><i class="fas fa-search"></i></button>
+    </form>
+    <a href="https://wa.me/573134884870" target="_blank"><i class="fas fa-shopping-bag"></i></a>
+  </nav>
+
+  <section class="producto-detalle">
+    <div class="carrusel">
+      <span class="flecha izquierda">&#10094;</span>
+      <span class="flecha derecha">&#10095;</span>
+      <img src="imagen.10.png" alt="Imanes personalizados" id="imagenPrincipal">
+    </div>
+
+    <div class="miniaturas">
+      <img src="imagen.10.png" class="activa">
+      <img src="imagen.11.png">
+      <img src="imagen.12.png">
+      <img src="imagen.13.png">
+    </div>
+
+    <div class="detalle-texto">
+      <h2>Imanes Personalizados</h2>
+      <p></p>
+      <h3>Para:</h3>
+      <ul>
+        <li><strong>Negocios:</strong> Promociona tu marca con estilo</li>
+    <li><strong>Regalos:</strong> Sorprende con un detalle único</li>
+    <li><strong>Recuerdos:</strong> Conserva tus mejores momentos</li>
+      </ul>
+      <a href="https://wa.me/573134884870?text=Hola%20me%20interesa%20el%20Calendario%20Magnetico" target="_blank">
+        <button>Comprar</button>
+      </a>
+      <br><br>
+      <a class="volver" href="index.html">← Volver a la tienda</a>
+    </div>
+  </section>
+
+  <script>
+    const imagenPrincipal = document.getElementById("imagenPrincipal");
+    const miniaturas = document.querySelectorAll(".miniaturas img");
+    const flechaIzq = document.querySelector(".flecha.izquierda");
+    const flechaDer = document.querySelector(".flecha.derecha");
+    let indice = 0;
+
+    const actualizarImagen = () => {
+      imagenPrincipal.src = miniaturas[indice].src;
+      miniaturas.forEach((img, i) => {
+        img.classList.toggle("activa", i === indice);
+      });
+    };
+
+    flechaIzq.addEventListener("click", () => {
+      indice = (indice - 1 + miniaturas.length) % miniaturas.length;
+      actualizarImagen();
+    });
+
+    flechaDer.addEventListener("click", () => {
+      indice = (indice + 1) % miniaturas.length;
+      actualizarImagen();
+    });
+
+    miniaturas.forEach((mini, i) => {
+      mini.addEventListener("click", () => {
+        indice = i;
+        actualizarImagen();
+      });
+    });
+
+    const btnBuscar = document.querySelector("#buscador button");
+    const inputBuscar = document.getElementById("buscarProducto");
+
+    btnBuscar.addEventListener("click", function(e) {
+      if (inputBuscar.style.display === "none" || inputBuscar.style.display === "") {
+        e.preventDefault();
+        inputBuscar.style.display = "block";
+        inputBuscar.focus();
+      }
+    });
+
+    document.getElementById("buscador").addEventListener("submit", function(e) {
+      e.preventDefault();
+      let texto = document.getElementById("buscarProducto").value.toLowerCase();
+      if (texto) {
+        alert("Buscando: " + texto);
+      } else {
+        alert("Por favor escribe algo para buscar.");
+      }
+    });
+  </script>
+</body>
+</html>

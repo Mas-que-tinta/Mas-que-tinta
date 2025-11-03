@@ -270,7 +270,45 @@ nav a:hover {
 .tab-content.active {
   display: block;
 }
-   
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  text-align: center;
+}
+
+.card a {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+  transition: opacity 0.3s ease;
+}
+
+/* efecto al pasar el cursor */
+.card:hover img {
+  opacity: 0.9;
+}
+
+/* cambio de color suave del título */
+.card:hover h3 {
+  color: #8da7b8; /* elige el color que quieras */
+  transition: color 0.4s ease;
+}
+
+.card h3 {
+  margin-top: 10px;
+  font-size: 1.1em;
+  transition: color 0.4s ease;
+}  
   </style>
 </head>
 <body>
@@ -344,15 +382,21 @@ nav a:hover {
 
   <!-- Sección: Productos en Venta -->
   <div class="tab-content" id="venta">
-    <div class="grid">
-      <div class="card">
-        <a href="producto4.html">
-          <img src="imagen.4.png" alt="Proximamenteo">
-          <h3>Proximamente</h3>
-          <p>$</p>
-        </a>
-        <button>Comprar</button>
-      </div>
+  <div class="grid">
+    <div class="card">
+      <a href="producto4.html" class="imagen-producto">
+        <img 
+          src="imagen4a.png" 
+          alt="Producto próximamente"
+          onmouseover="this.src='imagen4b.png'" 
+          onmouseout="this.src='imagen4a.png'"
+        >
+        <h3>Próximamente</h3>
+        <p>$123</p>
+      </a>
+    </div>
+  </div>
+</div>
 
       <div class="card">
         <a href="producto5.html">
@@ -411,4 +455,5 @@ nav a:hover {
 
 </body>
 </html>
+
 

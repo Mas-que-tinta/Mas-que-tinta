@@ -386,6 +386,30 @@ nav a:hover {
 .sub-tab:hover h3 {
   color: #8da7b8;
 }
+.volver {
+  background-color: #6b4f3a;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.volver:hover {
+  background-color: #8d6b52;
+}
+
+.productos-subseccion {
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
   </style>
 </head>
@@ -425,75 +449,57 @@ nav a:hover {
 
   <!-- Sección: Productos en Venta -->
 <div class="tab-content active" id="venta">
-  <div class="sub-tabs-grid">
-  <div class="card sub-tab active" data-subtab="morrales">
-    <img src="morrales.png" alt="Morrales">
-    <h3>Morrales</h3>
-  </div>
-  <div class="card sub-tab" data-subtab="velas">
-    <img src="velas.png" alt="Velas">
-    <h3>Velas</h3>
-  </div>
-  <div class="card sub-tab" data-subtab="otros">
-    <img src="otros.png" alt="Otros">
-    <h3>Otros</h3>
-  </div>
-</div>
+  <div class="productos-container">
 
-  <!-- Subpestaña: Morrales -->
-  <div class="sub-tab-content active" id="morrales">
-    <div class="grid">
-      <div class="card">
-        <a href="morral1.html">
-          <img 
-            src="morral1a.png"
-            alt="Morral básico"
-            onmouseover="this.src='morral1b.png'" 
-            onmouseout="this.src='morral1a.png'"
-          >
-          <h3>Morral básico</h3>
-        </a>
+    <!-- Vista inicial: categorías -->
+    <div class="sub-tabs-grid" id="categorias">
+      <div class="card sub-tab" data-subtab="morrales">
+        <img src="morrales.png" alt="Morrales">
+        <h3>Morrales</h3>
       </div>
-      <div class="card">
-        <a href="morral2.html">
-          <img 
-            src="morral2a.png"
-            alt="Morral urbano"
-            onmouseover="this.src='morral2b.png'" 
-            onmouseout="this.src='morral2a.png'"
-          >
-          <h3>Morral urbano</h3>
-        </a>
+      <div class="card sub-tab" data-subtab="velas">
+        <img src="velas.png" alt="Velas">
+        <h3>Velas</h3>
+      </div>
+      <div class="card sub-tab" data-subtab="otros">
+        <img src="otros.png" alt="Otros">
+        <h3>Otros</h3>
       </div>
     </div>
-  </div>
 
-  <!-- Subpestaña: Velas -->
-  <div class="sub-tab-content" id="velas">
-    <div class="grid">
-      <div class="card">
-        <a href="vela1.html">
-          <img src="vela1a.png" alt="Vela aromática"
-               onmouseover="this.src='vela1b.png'" 
-               onmouseout="this.src='vela1a.png'">
-          <h3>Vela aromática</h3>
-        </a>
+    <!-- Botón volver -->
+    <button id="volver-btn" class="volver" style="display: none;">⬅ Volver</button>
+
+    <!-- Secciones de productos -->
+    <div class="productos-subseccion" id="morrales" style="display: none;">
+      <div class="grid">
+        <div class="card">
+          <a href="morral1.html">
+            <img src="morral1a.png" alt="Morral básico">
+            <h3>Morral básico</h3>
+          </a>
+        </div>
+        <div class="card">
+          <a href="morral2.html">
+            <img src="morral2a.png" alt="Morral urbano">
+            <h3>Morral urbano</h3>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Subpestaña: Otros -->
-  <div class="sub-tab-content" id="otros">
-    <div class="grid">
-      <div class="card">
-        <a href="productoX.html">
-          <img src="imagenX.png" alt="Producto próximamente">
-          <h3>Próximamente</h3>
-        </a>
+    <div class="productos-subseccion" id="velas" style="display: none;">
+      <div class="grid">
+        <div class="card">
+          <a href="vela1.html">
+            <img src="vela1a.png" alt="Vela aromática">
+            <h3>Vela aromática</h3>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+
+    <div class="productos-subseccion" id="otros" style="display: no
 
    <!-- Sección: Productos Personalizables -->
   <div class="tab-content" id="personalizables">
@@ -571,22 +577,35 @@ nav a:hover {
   });
 </script>
 <script>
+const categorias = document.getElementById('categorias');
+const volverBtn = document.getElementById('volver-btn');
 const subTabs = document.querySelectorAll('.sub-tab');
-const subContents = document.querySelectorAll('.sub-tab-content');
+const subsecciones = document.querySelectorAll('.productos-subseccion');
 
 subTabs.forEach(tab => {
   tab.addEventListener('click', () => {
-    subTabs.forEach(t => t.classList.remove('active'));
-    subContents.forEach(c => c.classList.remove('active'));
-    tab.classList.add('active');
-    document.getElementById(tab.dataset.subtab).classList.add('active');
+    // Oculta las categorías
+    categorias.style.display = 'none';
+    volverBtn.style.display = 'inline-block';
+
+    // Muestra solo la subsección correspondiente
+    subsecciones.forEach(sec => sec.style.display = 'none');
+    document.getElementById(tab.dataset.subtab).style.display = 'block';
   });
 });
 
+volverBtn.addEventListener('click', () => {
+  // Vuelve a mostrar las categorías
+  categorias.style.display = 'grid';
+  volverBtn.style.display = 'none';
+  subsecciones.forEach(sec => sec.style.display = 'none');
+});
 </script>
+
 
 </body>
 </html>
+
 
 
 

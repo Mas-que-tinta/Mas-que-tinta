@@ -309,6 +309,45 @@ nav a:hover {
   font-size: 1.1em;
   transition: color 0.4s ease;
 }  
+
+/* ----- Subpestañas (nivel 2) ----- */
+.sub-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.sub-tab-btn {
+  background: #8da7b8;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: all 0.3s ease;
+  font-family: Montserrat, sans-serif;
+}
+
+.sub-tab-btn:hover {
+  background: white;
+  color: #8da7b8;
+  transform: scale(1.05);
+}
+
+.sub-tab-btn.active {
+  background: #6b4f3a;
+  color: white;
+}
+
+.sub-tab-content {
+  display: none;
+}
+
+.sub-tab-content.active {
+  display: block;
+}
   </style>
 </head>
 <body>
@@ -346,37 +385,69 @@ nav a:hover {
   </div>
 
   <!-- Sección: Productos en Venta -->
-  <div class="tab-content active" id="venta">
-  <div class="grid">
-    <div class="card">
-      <a href="producto4.html" class="imagen-producto">
-        <img 
-          src="imagen15.png" 
-          alt="Producto próximamente"
-          onmouseover="this.src='imagen17.png'" 
-          onmouseout="this.src='imagen15.png'"
-        >
-        <h3>Próximamente</h3>
-        <p>$123</p>
-      </a>
-    </div>
+  <!-- Sección: Productos en Venta -->
+<div class="tab-content active" id="venta">
+  <div class="sub-tabs">
+    <button class="sub-tab-btn active" data-subtab="morrales">Morrales</button>
+    <button class="sub-tab-btn" data-subtab="velas">Velas</button>
+    <button class="sub-tab-btn" data-subtab="otros">Otros</button>
   </div>
 
+  <!-- Subpestaña: Morrales -->
+  <div class="sub-tab-content active" id="morrales">
+    <div class="grid">
       <div class="card">
-        <a href="producto5html">
-          <img src="imagen.16.png" alt="imagen-producto">
-           <img 
-          src="imagen16.png" 
-          alt="Producto próximamente"
-          onmouseover="this.src='imagen18.png'" 
-          onmouseout="this.src='imagen16.png'"
-        >
-          <h3>Proximamente</h3>
-          <p>$</p>
+        <a href="morral1.html">
+          <img 
+            src="morral1a.png"
+            alt="Morral básico"
+            onmouseover="this.src='morral1b.png'" 
+            onmouseout="this.src='morral1a.png'"
+          >
+          <h3>Morral básico</h3>
+        </a>
+      </div>
+      <div class="card">
+        <a href="morral2.html">
+          <img 
+            src="morral2a.png"
+            alt="Morral urbano"
+            onmouseover="this.src='morral2b.png'" 
+            onmouseout="this.src='morral2a.png'"
+          >
+          <h3>Morral urbano</h3>
         </a>
       </div>
     </div>
-  
+  </div>
+
+  <!-- Subpestaña: Velas -->
+  <div class="sub-tab-content" id="velas">
+    <div class="grid">
+      <div class="card">
+        <a href="vela1.html">
+          <img src="vela1a.png" alt="Vela aromática"
+               onmouseover="this.src='vela1b.png'" 
+               onmouseout="this.src='vela1a.png'">
+          <h3>Vela aromática</h3>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Subpestaña: Otros -->
+  <div class="sub-tab-content" id="otros">
+    <div class="grid">
+      <div class="card">
+        <a href="productoX.html">
+          <img src="imagenX.png" alt="Producto próximamente">
+          <h3>Próximamente</h3>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
    <!-- Sección: Productos Personalizables -->
   <div class="tab-content" id="personalizables">
     <div class="grid">
@@ -452,9 +523,26 @@ nav a:hover {
     });
   });
 </script>
+<script>
+const subTabs = document.querySelectorAll('.sub-tab-btn');
+const subContents = document.querySelectorAll('.sub-tab-content');
+
+subTabs.forEach(btn => {
+  btn.addEventListener('click', () => {
+    // quitar clases activas
+    subTabs.forEach(b => b.classList.remove('active'));
+    subContents.forEach(c => c.classList.remove('active'));
+
+    // activar los correctos
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.subtab).classList.add('active');
+  });
+});
+</script>
 
 </body>
 </html>
+
 
 
 

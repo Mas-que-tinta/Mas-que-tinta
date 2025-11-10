@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parlante Bluetooth Cuadrado - Más que tinta</title>
+
+  <!-- Fuentes y Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      padding: 25px 10px 10px;
+      color: #61a7d4;
+      font-family: 'Dancing Script', cursive;
+      background: white;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.8em;
+    }
+
+    .producto-contenedor {
+      max-width: 900px;
+      background: white;
+      margin: 30px auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .producto-imagen {
+      background: #fff;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .producto-imagen img {
+      width: 100%;
+      max-width: 350px;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .miniaturas {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .miniaturas img {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      object-fit: cover;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: 0.3s;
+      border: 2px solid transparent;
+    }
+
+    .miniaturas img.activa {
+      opacity: 1;
+      border-color: #61a7d4;
+    }
+
+    .producto-detalle {
+      padding: 30px;
+    }
+
+    .producto-detalle h2 {
+      font-size: 2em;
+      color: #61a7d4;
+      margin-bottom: 5px;
+    }
+
+    .precio {
+      font-size: 1.6em;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    .descripcion {
+      font-size: 1em;
+      color: #555;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .detalle-seccion {
+      margin-bottom: 20px;
+    }
+
+    .detalle-seccion h3 {
+      font-size: 1.1em;
+      color: #333;
+      border-left: 4px solid #61a7d4;
+      padding-left: 8px;
+      margin-bottom: 8px;
+    }
+
+    .detalle-seccion ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .detalle-seccion ul li {
+      margin-bottom: 6px;
+      color: #555;
+    }
+
+    .colores {
+      display: flex;
+      gap: 8px;
+    }
+
+    .color-opcion {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .color-opcion:hover {
+      transform: scale(1.1);
+      border-color: #61a7d4;
+    }
+
+    .boton-comprar {
+      background: #61a7d4;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 25px;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    .boton-comprar:hover {
+      background: #4d93c0;
+    }
+
+    .volver {
+      display: inline-block;
+      margin-top: 15px;
+      color: #61a7d4;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .volver:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .producto-contenedor {
+        grid-template-columns: 1fr;
+      }
+      .producto-imagen {
+        padding: 15px;
+      }
+    }
+    .colores {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.color-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.color-opcion {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  cursor: pointer;
+  transition: transform 0.2s;
+  margin-bottom: 5px;
+}
+
+.color-opcion:hover {
+  transform: scale(1.1);
+  border-color: #61a7d4;
+}
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Más que tinta</h1>
+  </header>
+
+  <section class="producto-contenedor">
+    <div class="producto-imagen">
+      <img src="ParlanteBluetoothCuadrado.png" id="imagenPrincipal" alt="parlantebluetoothcuadrado">
+      <div class="miniaturas">
+        <img src="ParlanteBluetoothCuadrado.png" class="activa">
+        <img src="ParlanteBluetoothCuadrado.2.png">
+        <img src="ParlanteBluetoothCuadrado.3.png">
+      </div>
+    </div>
+
+    <div class="producto-detalle">
+      <h2>Parlante Bluetooth Cuadrado</h2>
+      <p class="precio">$34.000 COP</p>
+
+      <p class="descripcion">
+        Mini Parlante Bluetooth de alta calidad con mosquetón para colgar y llevar a todos lados, dispositivo compacto con sonido rico utilizado para reuniones familiares y reuniones pequeñas.
+      </p>
+
+      <div class="detalle-seccion">
+        <h3>Medidas:</h3>
+        <ul>
+          <li>Alto: 10.7cm</li>
+          <li>Ancho: 9.4cm</li>
+          <li>Profundidad: 4.5cm</li>
+        </ul>
+      </div>
+
+      <div class="detalle-seccion">
+  <h3>Colores disponibles:</h3>
+  <div class="colores">
+    <div class="color-item">
+    <div class="color-item">
+      <div class="color-opcion" style="background:#000000;"></div>
+      <span>Negro</span>
+    </div>
+  </div>
+</div>
+
+      </div>
+
+      <a href="https://wa.me/573134884870?text=Hola%20me%20interesa%20el%20Parlante%20Bluetooth%20Cuadrado" target="_blank" class="boton-comprar">
+        Comprar ahora
+      </a>
+
+      <br>
+      <a href="index.html" class="volver">← Volver a la tienda</a>
+    </div>
+  </section>
+
+  <script>
+    const imagenPrincipal = document.getElementById("imagenPrincipal");
+    const miniaturas = document.querySelectorAll(".miniaturas img");
+    let indice = 0;
+
+    miniaturas.forEach((mini, i) => {
+      mini.addEventListener("click", () => {
+        indice = i;
+        miniaturas.forEach(m => m.classList.remove("activa"));
+        mini.classList.add("activa");
+        imagenPrincipal.src = mini.src;
+      });
+    });
+  </script>
+</body>
+</html>
